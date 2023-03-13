@@ -71,7 +71,14 @@ body {
   background-size: cover;
   position: relative;
 }
-
+.off_screen {
+  width: 12.5rem;
+  height: 19.5rem;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+  background-color: black;
+  display: none;
+}
 .home_btn {
   width: 1.85rem;
   height: 1.85rem;
@@ -149,4 +156,10 @@ body {
   position: absolute;
   bottom: 0.25rem;
   right: 0.25rem;
+}
+.hiden {
+  display: none;
+}
+.active {
+  display: block;
 }
