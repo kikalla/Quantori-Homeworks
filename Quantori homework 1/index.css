@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+body {
+  background: #64a0bd;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.phone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14rem;
+  height: 25.25rem;
+  border: solid #f6e0c9 4px;
+  border-radius: 20px;
+  background-color: white;
+  padding-bottom: 0.3rem;
+}
+
+.top {
+  width: 100%;
+
+  padding-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+.up_camera {
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background-color: black;
+  margin-bottom: 0.5rem;
+}
+.camera-speaker {
+  align-items: center;
+  position: relative;
+  right: 0.5rem;
+  flex-direction: row;
+}
+.camera {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: black;
+  position: relative;
+  margin-right: 0.5rem;
+}
+
+.speaker {
+  width: 2.5rem;
+  height: 3px;
+  background-color: black;
+  border-radius: 20%;
+}
+
+.phone_screen {
+  width: 12.5rem;
+  height: 19.5rem;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+  background: url(https://img.wallpaper.sc/iphone5s/images/iphone5s-744x1392-wallpaper_03805.jpg)
+    center no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.home_btn {
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 50%;
+  background-color: white;
+  border: solid black 1px;
+  cursor: pointer;
+}
+.silent_btn {
+  height: 1rem;
+  width: 0.25rem;
+  background-color: #857c7c;
+  position: absolute;
+  left: -0.43rem;
+  top: 3.125rem;
+}
+.volume_1 {
+  height: 1.56rem;
+  width: 0.25rem;
+  background-color: #857c7c;
+  position: absolute;
+  left: -0.43rem;
+  top: 5.3rem;
+}
+.volume_2 {
+  height: 1.56rem;
+  width: 0.25rem;
+  background-color: #857c7c;
+  position: absolute;
+  left: -0.43rem;
+  top: 7.2rem;
+}
+.off_btn {
+  height: 1.56rem;
+  width: 0.25rem;
+  background-color: #857c7c;
+  position: absolute;
+  right: -0.43rem;
+  top: 5.3rem;
+  cursor: pointer;
+}
+.time {
+  color: white;
+  font-size: 3rem;
+}
+.month {
+  color: white;
+  font-size: 0.85rem;
+}
+.network {
+  color: white;
+  font-size: 0.6rem;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.network_p {
+  margin: 0 0.15rem;
+}
+.up_bar {
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.1rem 0.2rem;
+}
+.slider {
+  margin-top: 10rem;
+  flex-direction: row;
+}
+.slider_p {
+  color: #d3cbcb;
+  font-size: 0.9rem;
+  margin-left: 0.3rem;
+}
+.camera_icon {
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0.25rem;
+}
