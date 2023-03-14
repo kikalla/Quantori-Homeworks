@@ -41,19 +41,25 @@ function setCurrentTime() {
 
   timeEl.textContent = `${hours}:${minutes} `;
   monthEl.textContent = `${day}, ${date} ${month}`;
-  setTimeout(function () {
-    setCurrentTime();
-  }, 1000);
 }
+
 setCurrentTime();
 
-offBtn.addEventListener("click", function () {
+setInterval(function () {
+  setCurrentTime();
+}, 1000);
+
+function unlockPhone() {
   phoneScreen.classList.toggle("hiden");
   offScreen.classList.toggle("active");
+}
+
+offBtn.addEventListener("click", function () {
+  unlockPhone();
 });
+
 homeBtn.addEventListener("click", function () {
   if (offScreen.classList.contains("active")) {
-    phoneScreen.classList.toggle("hiden");
-    offScreen.classList.toggle("active");
+    unlockPhone();
   }
 });

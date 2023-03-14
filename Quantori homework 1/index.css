@@ -71,6 +71,13 @@ body {
   background-size: cover;
   position: relative;
 }
+.screen_middle {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+}
 .off_screen {
   width: 12.5rem;
   height: 19.5rem;
@@ -144,7 +151,6 @@ body {
   padding: 0.1rem 0.2rem;
 }
 .slider {
-  margin-top: 10rem;
   flex-direction: row;
 }
 .slider_p {
@@ -162,4 +168,16 @@ body {
 }
 .active {
   display: block;
+}
+.gray {
+  color: #d3cbcb;
+}
+.white {
+  color: white;
+}
+.fa-ellipsis {
+  font-size: 1rem;
+}
+.fa-wifi {
+  font-size: 0.5rem;
 }
