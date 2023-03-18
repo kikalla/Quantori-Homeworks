@@ -1,0 +1,136 @@
+:root {
+  --red: invert(35%) sepia(98%) saturate(7290%) hue-rotate(355deg)
+    brightness(106%) contrast(125%);
+  --blue: invert(8%) sepia(97%) saturate(7464%) hue-rotate(247deg)
+    brightness(100%) contrast(144%);
+  --yellow: invert(96%) sepia(77%) saturate(1740%) hue-rotate(323deg)
+    brightness(107%) contrast(111%);
+  --green: invert(79%) sepia(7%) saturate(4005%) hue-rotate(39deg)
+    brightness(103%) contrast(61%);
+}
+
+.btn {
+  position: absolute;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  top: calc(50% - 5rem);
+  left: calc(50% - 10rem);
+  width: 20rem;
+  height: 10rem;
+  font-size: large;
+  cursor: pointer;
+}
+body {
+  background-color: black;
+}
+.logo_first {
+  width: 10rem;
+  position: relative;
+  text-transform: uppercase;
+  animation: dvd_first 10s linear infinite;
+}
+.logo_second {
+  width: 10rem;
+  position: relative;
+  text-transform: uppercase;
+  animation: dvd_second 15s linear infinite;
+}
+
+@keyframes dvd_first {
+  0% {
+    filter: var(--red);
+    transform: translate(30vw, calc(0vh - 0.6rem)) rotateY(180deg);
+  }
+  3% {
+    transform: translate(35vw, calc(5vh - 0.6rem)) rotateY(0deg);
+  }
+  30% {
+    filter: var(--red);
+    transform: translate(calc(100vw - 10.5rem), calc(70vh - 6rem));
+  }
+  30.1% {
+    filter: var(--blue);
+    transform: translate(calc(100vw - 10.5rem), calc(70vh - 6rem))
+      rotateY(180deg);
+  }
+  33% {
+    transform: translate(calc(95vw - 10.5rem), calc(75vh - 6rem)) rotateY(0deg);
+  }
+
+  50% {
+    filter: var(--blue);
+    transform: translate(calc(70vw - 10.1rem), calc(100vh - 6rem));
+  }
+  50.1% {
+    filter: var(--yellow);
+    transform: translate(calc(70vw - 10.1rem), calc(100vh - 6rem))
+      rotateY(180deg);
+  }
+  53% {
+    transform: translate(calc(65vw - 10.1rem), calc(95vh - 6rem)) rotateY(0deg);
+  }
+
+  80% {
+    filter: var(--yellow);
+    transform: translate(calc(0vw - 0.8rem), 30vh);
+  }
+  80.1% {
+    filter: var(--green);
+    transform: translate(calc(0vw - 0.8rem), 30vh) rotateY(180deg);
+  }
+  83% {
+    transform: translate(calc(5vw - 0.8rem), 25vh) rotateY(0deg);
+  }
+
+  99.9% {
+    filter: var(--green);
+  }
+  100% {
+    filter: var(--red);
+    transform: translate(30vw, calc(0vh - 0.6rem));
+  }
+}
+
+@keyframes dvd_second {
+  0% {
+    filter: var(--blue);
+    transform: translate(0vw, calc(0vh - 0.6rem));
+  }
+
+  15% {
+    filter: var(--blue);
+    transform: translate(calc(0vw - 11rem), calc(30vh - 0.6rem));
+  }
+  15.1% {
+    filter: var(--red);
+  }
+
+  50% {
+    filter: var(--red);
+    transform: translate(calc(60vw - 10.1rem), calc(100vh - 6rem));
+  }
+  50.1% {
+    filter: var(--yellow);
+  }
+
+  65% {
+    filter: var(--yellow);
+    transform: translate(calc(100vw - 21rem), 70vh);
+  }
+  65.1% {
+    filter: var(--green);
+  }
+
+  99.9% {
+    filter: var(--green);
+  }
+  100% {
+    filter: var(--blue);
+    transform: translate(0vw, calc(0vh - 0.6rem));
+  }
+}
+
+.hiden {
+  display: none;
+}
