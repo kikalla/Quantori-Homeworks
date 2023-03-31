@@ -1,0 +1,21 @@
+svg {
+  width: 50%;
+}
+#big-arrow {
+  animation: big-arrow 4s infinite linear;
+  transform-box: fill-box;
+}
+
+#little-arrow {
+  animation: big-arrow 48s infinite linear;
+  transform-box: fill-box;
+}
+
+@keyframes big-arrow {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}

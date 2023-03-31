@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 3</title>
+    <link rel="stylesheet" href="css/utility.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/response.css" />
+    <script async src="index.js"></script>
+  </head>
+  <body>
+    <div class="web">
+      <div class="sidebar flex">
+        <div class="sidebar__body">
+          <img class="sidebar__logo" src="images/logo.svg" alt="logo" />
+          <h2 class="sidebar__h2">D A S H B O A R D</h2>
+          <div class="sidebar__select-menu">
+            <div id="selectMenu" class="sidebar__select-top flex pointer">
+              <div class="flex">
+                <img src="images/dashboard.svg" alt="dashboard" />
+                <p class="sidebar__p">Dashboard</p>
+              </div>
+              <img
+                id="arrow"
+                class="sidebar__arrow"
+                src="images/arrowDown.svg"
+                alt="arrow" />
+            </div>
+            <ul class="sidebar__ul flex">
+              <li class="sidebar__li pointer">Analytics</li>
+              <li class="sidebar__li pointer">Finance</li>
+              <li class="sidebar__li pointer">Job Board</li>
+            </ul>
+          </div>
+          <div class="sidebar__select-top flex pointer">
+            <div class="flex">
+              <img src="images/email.svg" alt="dashboard" />
+              <p class="sidebar__p">Dashboard</p>
+            </div>
+            <img
+              class="sidebar__arrow"
+              src="images/arrowDown.svg"
+              alt="arrow" />
+          </div>
+          <div class="sidebar__select-top flex pointer">
+            <div class="flex">
+              <img src="images/friend.svg" alt="dashboard" />
+              <p class="sidebar__p">Dashboard</p>
+            </div>
+            <img
+              class="sidebar__arrow"
+              src="images/arrowDown.svg"
+              alt="arrow" />
+          </div>
+          <div class="sidebar__select-top flex pointer">
+            <div class="flex">
+              <img src="images/apps.svg" alt="dashboard" />
+              <p class="sidebar__p">Dashboard</p>
+            </div>
+            <img
+              class="sidebar__arrow"
+              src="images/arrowDown.svg"
+              alt="arrow" />
+          </div>
+          <h2 class="sidebar__h2">P A G E S</h2>
+          <div class="sidebar__select-top flex pointer">
+            <div class="flex">
+              <img src="images/help.svg" alt="dashboard" />
+              <p class="sidebar__p">Dashboard</p>
+            </div>
+            <img
+              class="sidebar__arrow"
+              src="images/arrowDown.svg"
+              alt="arrow" />
+          </div>
+          <div class="sidebar__select-top flex pointer">
+            <div class="flex">
+              <img src="images/file.svg" alt="dashboard" />
+              <p class="sidebar__p">Dashboard</p>
+            </div>
+            <img
+              class="sidebar__arrow"
+              src="images/arrowDown.svg"
+              alt="arrow" />
+          </div>
+        </div>
+        <div class="sidebar__footer-menu flex">
+          <div class="sidebar__line"></div>
+          <div class="sidebar__footer flex">
+            <img class="pointer" src="images/settings.svg" alt="settings" />
+            <img class="pointer" src="images/logout.svg" alt="logout" />
+            <img class="pointer" src="images/globe.svg" alt="globe" />
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="header flex">
+          <div class="header__top flex">
+            <img class="header__logo" src="images/logo.svg" alt="logo" />
+            <div class="header__profile pointer">
+              <img
+                class="header__profile-image"
+                src="images/default.png"
+                alt="default" />
+              <div class="header__profile-dot"></div>
+            </div>
+          </div>
+          <div class="header__icons flex">
+            <img class="pointer" src="images/bell.svg" alt="bell" />
+            <img class="pointer" src="images/calendar.svg" alt="calendar" />
+            <img class="pointer" src="images/apps.svg" alt="apps" />
+          </div>
+          <div class="header__search flex">
+            <img
+              class="header__search-image"
+              src="images/search.svg"
+              alt="search" />
+            <input class="header__input" type="text" placeholder="Search..." />
+          </div>
+        </header>
+        <div class="banner flex">
+          <div class="banner__text">
+            <h2 class="banner__h2">Unlock premium stats</h2>
+            <p class="banner__p">
+              Get up to 10TB of storage for a limited time
+            </p>
+          </div>
+          <div class="banner__button flex pointer">
+            <img src="images/upgrade.svg" alt="upgrade" />
+            <p class="banner__button-p">Upgrade</p>
+          </div>
+        </div>
+        <section class="metrics flex">
+          <div class="metrics__card flex">
+            <p class="metrics__card-p">Revenue</p>
+            <h2 class="metrics__card-h2">$56,945</h2>
+            <div class="metrics__info flex">
+              <p class="metrics__badge metrics__badge--green">+45%</p>
+              <p class="metrics__from">From 4.6%</p>
+            </div>
+          </div>
+          <div class="metrics__card flex">
+            <p class="metrics__card-p">Users</p>
+            <h2 class="metrics__card-h2">76.8%</h2>
+            <div class="metrics__info flex">
+              <p class="metrics__badge metrics__badge--red">+45%</p>
+              <p class="metrics__from">From 4.6%</p>
+            </div>
+          </div>
+          <div class="metrics__card flex">
+            <p class="metrics__card-p">New Signups</p>
+            <h2 class="metrics__card-h2">116</h2>
+            <p class="metrics__badge metrics__badge--gray">0.00</p>
+          </div>
+          <div class="metrics__card flex">
+            <p class="metrics__card-p">Retention</p>
+            <h2 class="metrics__card-h2">12.67%</h2>
+            <div class="metrics__info flex">
+              <p class="metrics__badge metrics__badge--green">+45%</p>
+              <p class="metrics__from">From 4.6%</p>
+            </div>
+          </div>
+        </section>
+        <section class="performance flex">
+          <div class="performance__header flex">
+            <h2>Performance</h2>
+            <img class="pointer" src="images/dots.svg" alt="dots" />
+          </div>
+          <div class="performance__line"></div>
+          <img
+            class="performance__image"
+            src="images/elements.svg"
+            alt="elements" />
+          <div class="performance__texts flex">
+            <div class="performance__text flex">
+              <div class="performance__dot performance__dot--blue"></div>
+              <p>Instagram</p>
+            </div>
+            <div class="performance__text flex">
+              <div class="performance__dot performance__dot--green"></div>
+              <p>Facebook</p>
+            </div>
+          </div>
+        </section>
+        <section class="table">
+          <div class="table__header flex">
+            <h2>Installed apps</h2>
+            <img class="pointer" src="images/dots.svg" alt="dots" />
+          </div>
+          <div class="table__body">
+            <div class="table__sections flex">
+              <p class="table__section-p">Source</p>
+              <p class="table__section-p">Amount</p>
+              <p class="table__section-p">Status</p>
+              <p class="table__section-p">User ID</p>
+              <p class="table__section-p">Joined</p>
+              <p class="table__section-p">Group</p>
+            </div>
+            <div class="table__body table__body--apps flex">
+              <div class="table__app-logo flex">
+                <img src="images/zepplin.svg" alt="zepplin" />
+                <p>Zepplin</p>
+              </div>
+              <p class="table__app-p">686.00</p>
+              <p class="table__app-p">
+                <span class="table__app-p--active">Active</span>
+              </p>
+              <p class="table__app-p">114423</p>
+              <p class="table__app-p">October</p>
+              <p class="table__app-p">Design</p>
+            </div>
+            <div class="table__body table__body--apps flex">
+              <div class="table__app-logo flex">
+                <img src="images/figma.svg" alt="zepplin" />
+                <p>Figma</p>
+              </div>
+              <p class="table__app-p">864.00</p>
+              <p class="table__app-p">
+                <span class="table__app-p--pending">Pending</span>
+              </p>
+              <p class="table__app-p">76223</p>
+              <p class="table__app-p">June</p>
+              <p class="table__app-p">Finance</p>
+            </div>
+            <div class="table__body table__body--apps flex">
+              <div class="table__app-logo flex">
+                <img src="images/meta.svg" alt="zepplin" />
+                <p>Meta</p>
+              </div>
+              <p class="table__app-p">176.00</p>
+              <p class="table__app-p">
+                <span class="table__app-p--cancelled">Cancelled</span>
+              </p>
+              <p class="table__app-p">89453</p>
+              <p class="table__app-p">March</p>
+              <p class="table__app-p">Coding</p>
+            </div>
+            <div class="table__body table__body--apps flex">
+              <div class="table__app-logo flex">
+                <img src="images/angular.svg" alt="zepplin" />
+                <p>Angular</p>
+              </div>
+              <p class="table__app-p">49.00</p>
+              <p class="table__app-p">
+                <span class="table__app-p--active">Active</span>
+              </p>
+              <p class="table__app-p">11467</p>
+              <p class="table__app-p">February</p>
+              <p class="table__app-p">Marketing</p>
+            </div>
+            <div class="table__body table__body--apps flex">
+              <div class="table__app-logo flex">
+                <img src="images/vue.svg" alt="zepplin" />
+                <p>Vue</p>
+              </div>
+              <p class="table__app-p">999.00</p>
+              <p class="table__app-p">
+                <span class="table__app-p--active">Active</span>
+              </p>
+              <p class="table__app-p">67385</p>
+              <p class="table__app-p">October</p>
+              <p class="table__app-p">Finance</p>
+            </div>
+          </div>
+          <div class="table__arrows flex">
+            <img class="pointer" src="images/arrowLeft.svg" alt="arrow" />
+            <p>15</p>
+            <img class="pointer" src="images/arrowRight.svg" alt="arrow" />
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
