@@ -1,0 +1,11 @@
+/* Manipulation classes */
+
+.hidden {
+  display: none;
+}
+.form__add-button--active {
+  background-color: #3c86f4;
+}
+.pointer {
+  cursor: pointer;
+}

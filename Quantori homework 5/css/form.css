@@ -1,0 +1,65 @@
+/* Form Styling */
+
+.form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 32.8125rem;
+  height: 23.125rem;
+  padding: 1.25rem 2rem;
+  background-color: rgb(238, 235, 229);
+  border-radius: 30px;
+}
+.form__h2 {
+  font-size: 1.5rem;
+}
+
+.form__radio-date {
+  justify-content: space-between;
+  width: 100%;
+}
+.form__radios {
+  gap: 0.75rem;
+}
+.form__radio {
+  display: none;
+}
+.form__date {
+  position: relative;
+  padding: 0.625rem 1rem;
+  border: 2px solid #3c86f499;
+  border-radius: 15px;
+  outline: none;
+  text-align: center;
+}
+.form__buttons {
+  width: 100%;
+}
+
+.form__add-button {
+  width: 50%;
+  background-color: #d3d3d3;
+  color: white;
+  cursor: not-allowed;
+}
+.form__cancel-button {
+  width: 50%;
+  background-color: transparent;
+  color: #0053cf;
+}
+
+#health:checked + .form__radio--health {
+  outline: 2px solid#0053cf;
+}
+#work:checked + .form__radio--work {
+  outline: 2px solid#9747ff;
+}
+#home:checked + .form__radio--home {
+  outline: 2px solid#639462;
+}
+#other:checked + .form__radio--other {
+  outline: 2px solid#ea8c00;
+}
