@@ -1,0 +1,76 @@
+/* Tasks Styling */
+
+.tasks {
+  width: 30rem;
+}
+.tasks__ul {
+  margin-top: 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1.875rem;
+  /* height: 14.375rem; */
+  /* overflow-y: scroll; */
+}
+.tasks__list {
+  justify-content: space-between;
+  width: 100%;
+}
+.tasks__containter {
+  text-decoration: none;
+  flex-direction: column;
+}
+.tasks__text {
+  font-size: 1.125rem;
+  font-weight: 400;
+  width: 100%;
+}
+.tasks__info {
+  width: 100%;
+  margin-top: 0.625rem;
+  font-size: 0.75rem;
+  gap: 0.625rem;
+  justify-content: flex-start;
+}
+
+.tasks__list {
+  list-style-type: none;
+}
+.tasks__delete {
+  cursor: pointer;
+}
+.tasks__info--work,
+.form__radio--work {
+  color: #9747ff;
+  background-color: #e8d7ff;
+  border-radius: 5px;
+  padding: 0.14rem 0.625rem;
+  cursor: pointer;
+}
+.tasks__info--other,
+.form__radio--other {
+  color: #ea8c00;
+  background-color: #ffecc7;
+  border-radius: 5px;
+  padding: 0.14rem 0.625rem;
+  cursor: pointer;
+}
+.tasks__info--home,
+.form__radio--home {
+  color: #639462;
+  background-color: #e2f6e2;
+  border-radius: 5px;
+  padding: 0.14rem 0.625rem;
+  cursor: pointer;
+}
+.tasks__info--health,
+.form__radio--health {
+  color: #0053cf;
+  background-color: #3c86f44f;
+  border-radius: 5px;
+  padding: 0.14rem 0.625rem;
+  cursor: pointer;
+}
+.tasks__info--time {
+  color: #838383;
+}
