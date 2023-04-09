@@ -35,3 +35,10 @@ function List({ uncompletedTasks: tasks, removeTask, markTask }) {
 
   return div;
 }
+
+function renderTasks(tasks, removeTask, markTask) {
+  const appContainer = document.querySelector(".tasks");
+  appContainer.innerHTML = "";
+  const uncompletedTasks = filterUncompletedTasks(tasks, search);
+  appContainer.append(List({ uncompletedTasks, removeTask, markTask }));
+}

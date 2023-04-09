@@ -13,19 +13,27 @@ function NewTaskButton() {
   return newTaskButton;
 }
 
-function SearchInput() {
+function SearchInput(removeTask, markTask) {
   const searchInput = document.createElement("input");
   searchInput.setAttribute("type", "text");
   searchInput.setAttribute("placeholder", "Search Task");
   searchInput.classList.add("header__input");
+  searchInput.value = search;
+
+  searchInput.addEventListener("input", (e) => {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    search = e.target.value;
+    renderTasks(tasks, removeTask, markTask);
+    renderCompletedTasks(tasks, removeTask, markTask);
+  });
 
   return searchInput;
 }
 
-function Header() {
+function Header(removeTask, markTask) {
   const header = document.createElement("header");
   const h1 = document.createElement("h1");
-  const searchInput = SearchInput();
+  const searchInput = SearchInput(removeTask, markTask);
   const newTaskButton = NewTaskButton();
   const div = document.createElement("div");
 
