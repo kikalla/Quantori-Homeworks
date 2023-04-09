@@ -23,6 +23,7 @@ function AddInput() {
   const addInput = document.createElement("input");
   addInput.setAttribute("type", "text");
   addInput.setAttribute("placeholder", "Task Title");
+  addInput.setAttribute("maxlength", 40);
   addInput.classList.add("form__input");
 
   addInput.addEventListener("input", () => {
@@ -107,6 +108,8 @@ function AddButton({ text, onClick }) {
         task: task.value,
         info: selectedInput.value,
         date: date.value,
+        id: Math.random(),
+        completed: false,
       });
       document.querySelector(".form").classList.add("hidden");
     }
@@ -117,7 +120,7 @@ function AddButton({ text, onClick }) {
 
 function Form(action) {
   const form = document.createElement("form");
-  form.classList.add("form", "flex");
+  form.classList.add("form", "flex", "hidden");
 
   const addInput = AddInput();
   const radios = AddRadioButtons();
