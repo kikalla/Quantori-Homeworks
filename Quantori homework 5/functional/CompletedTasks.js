@@ -45,3 +45,9 @@ function Completed({ completedTasks: tasks, removeTask, markTask }) {
 
   return div;
 }
+function renderCompletedTasks(tasks, removeTask, markTask) {
+  const appContainer = document.querySelector(".completed-tasks");
+  appContainer.innerHTML = "";
+  const completedTasks = filterCompletedTasks(tasks, search);
+  appContainer.append(Completed({ completedTasks, removeTask, markTask }));
+}

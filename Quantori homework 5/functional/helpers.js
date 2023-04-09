@@ -63,3 +63,31 @@ function addLisenersToButtons(btnClass, taskClass, action) {
     });
   });
 }
+
+function filterUncompletedTasks(tasks, search) {
+  return tasks
+    .filter((task) => {
+      if (!task.completed && task.task.includes(search)) {
+        return true;
+      }
+    })
+    .sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateA - dateB;
+    });
+}
+
+function filterCompletedTasks(tasks, search) {
+  return tasks
+    .filter((task) => {
+      if (task.completed && task.task.includes(search)) {
+        return true;
+      }
+    })
+    .sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateA - dateB;
+    });
+}
