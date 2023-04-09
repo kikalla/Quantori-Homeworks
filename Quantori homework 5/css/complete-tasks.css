@@ -1,9 +1,10 @@
 /* Tasks Styling */
 
-.tasks {
+.completed-tasks {
   width: 30rem;
+  color: #838383;
 }
-.tasks__ul {
+.completed-tasks__ul {
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
   flex-direction: column;
@@ -13,21 +14,24 @@
   /* height: 14.375rem; */
   /* overflow-y: scroll; */
 }
-.tasks__list {
+.completed-tasks__h2 {
+  color: black;
+}
+.completed-tasks__list {
   justify-content: space-between;
   width: 100%;
 }
-.tasks__containter {
+.completed-tasks__containter {
   text-decoration: none;
   flex-direction: column;
   margin-left: 1.75rem;
 }
-.tasks__text {
+.completed-tasks__text {
   font-size: 1.125rem;
   font-weight: 400;
   width: 100%;
 }
-.tasks__check {
+.completed-tasks__check {
   width: 1.3125rem;
   height: 1.3125rem;
   border: 2px solid #d3d3d3;
@@ -35,7 +39,10 @@
   border-radius: 4px;
   cursor: pointer;
 }
-.tasks__info {
+.completed-tasks__check--active {
+  background-color: #d3d3d3;
+}
+.completed-tasks__info {
   width: 100%;
   margin-top: 0.625rem;
   font-size: 0.75rem;
@@ -43,44 +50,15 @@
   justify-content: flex-start;
 }
 
-.tasks__list {
+.completed-tasks__list {
   list-style-type: none;
 }
-.tasks__delete {
+.completed-tasks__delete {
   cursor: pointer;
 }
-.tasks__info--work,
-.form__radio--work {
-  color: #9747ff;
-  background-color: #e8d7ff;
+.completed-tasks__info--type {
+  background-color: #f5f5f5;
   border-radius: 5px;
   padding: 0.14rem 0.625rem;
   cursor: pointer;
-}
-.tasks__info--other,
-.form__radio--other {
-  color: #ea8c00;
-  background-color: #ffecc7;
-  border-radius: 5px;
-  padding: 0.14rem 0.625rem;
-  cursor: pointer;
-}
-.tasks__info--home,
-.form__radio--home {
-  color: #639462;
-  background-color: #e2f6e2;
-  border-radius: 5px;
-  padding: 0.14rem 0.625rem;
-  cursor: pointer;
-}
-.tasks__info--health,
-.form__radio--health {
-  color: #0053cf;
-  background-color: #3c86f44f;
-  border-radius: 5px;
-  padding: 0.14rem 0.625rem;
-  cursor: pointer;
-}
-.tasks__info--time {
-  color: #838383;
 }
