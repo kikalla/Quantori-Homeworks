@@ -4,7 +4,7 @@
   display: none;
 }
 .form__add-button--active {
-  background-color: #3c86f4;
+  background-color: var(--lighter-blue-color);
 }
 .pointer {
   cursor: pointer;

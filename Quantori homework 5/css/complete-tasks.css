@@ -2,7 +2,7 @@
 
 .completed-tasks {
   width: 30rem;
-  color: #838383;
+  color: var(--gray-color);
 }
 .completed-tasks__ul {
   margin-top: 1.5rem;
@@ -11,8 +11,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 1.875rem;
-  /* height: 14.375rem; */
-  /* overflow-y: scroll; */
 }
 .completed-tasks__h2 {
   color: black;
@@ -34,13 +32,13 @@
 .completed-tasks__check {
   width: 1.3125rem;
   height: 1.3125rem;
-  border: 2px solid #d3d3d3;
+  border: 2px solid var(--light-gray-color);
   padding: 0.0625rem;
   border-radius: 4px;
   cursor: pointer;
 }
 .completed-tasks__check--active {
-  background-color: #d3d3d3;
+  background-color: var(--light-gray-color);
 }
 .completed-tasks__info {
   width: 100%;
@@ -57,7 +55,7 @@
   cursor: pointer;
 }
 .completed-tasks__info--type {
-  background-color: #f5f5f5;
+  background-color: var(--wheat-color);
   border-radius: 5px;
   padding: 0.14rem 0.625rem;
   cursor: pointer;
