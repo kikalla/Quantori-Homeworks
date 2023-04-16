@@ -1,5 +1,14 @@
 /* Form Styling */
 
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
 .form {
   position: fixed;
   top: 50%;
@@ -10,8 +19,9 @@
   width: 32.8125rem;
   height: 23.125rem;
   padding: 1.25rem 2rem;
-  background-color: rgb(238, 235, 229);
+  background-color: white;
   border-radius: 30px;
+  z-index: 10;
 }
 .form__h2 {
   font-size: 1.5rem;
@@ -30,7 +40,7 @@
 .form__date {
   position: relative;
   padding: 0.625rem 1rem;
-  border: 2px solid #3c86f499;
+  border: 2px solid var(--light-blue-color);
   border-radius: 15px;
   outline: none;
   text-align: center;
@@ -41,25 +51,25 @@
 
 .form__add-button {
   width: 50%;
-  background-color: #d3d3d3;
+  background-color: var(--light-gray-color);
   color: white;
   cursor: not-allowed;
 }
 .form__cancel-button {
   width: 50%;
   background-color: transparent;
-  color: #0053cf;
+  color: var(--blue-color);
 }
 
 #health:checked + .form__radio--health {
-  outline: 2px solid#0053cf;
+  outline: 2px solid var(--blue-color);
 }
 #work:checked + .form__radio--work {
-  outline: 2px solid#9747ff;
+  outline: 2px solid var(--purple-color);
 }
 #home:checked + .form__radio--home {
-  outline: 2px solid#639462;
+  outline: 2px solid var(--green-color);
 }
 #other:checked + .form__radio--other {
-  outline: 2px solid#ea8c00;
+  outline: 2px solid var(--orange-color);
 }

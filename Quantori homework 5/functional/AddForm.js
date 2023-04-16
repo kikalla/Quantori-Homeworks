@@ -77,17 +77,20 @@ function AddDate() {
   return addDate;
 }
 
-function CancelButton() {
+function CancelButton(background, form) {
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "Cancel";
   cancelButton.classList.add("form__cancel-button");
 
-  cancelButton.addEventListener("click", (e) => {
-    const form = document.querySelector(".form");
-
-    e.preventDefault();
-    form.classList.add("hidden");
-  });
+  function listenCloseEvent(element) {
+    element.addEventListener("click", (e) => {
+      e.preventDefault();
+      form.classList.add("hidden");
+      background.classList.add("hidden");
+    });
+  }
+  listenCloseEvent(cancelButton);
+  listenCloseEvent(background);
 
   return cancelButton;
 }
@@ -112,6 +115,7 @@ function AddButton({ text, onClick }) {
         completed: false,
       });
       document.querySelector(".form").classList.add("hidden");
+      document.querySelector(".background").classList.add("hidden");
     }
   });
 
@@ -122,13 +126,17 @@ function Form(action) {
   const form = document.createElement("form");
   form.classList.add("form", "flex", "hidden");
 
+  const background = document.createElement("div");
   const addInput = AddInput();
   const radios = AddRadioButtons();
   const addDate = AddDate();
-  const cancelButton = CancelButton();
+  const cancelButton = CancelButton(background, form);
   const addButton = AddButton({ text: "Add task", onClick: action });
   const dateRadioDiv = document.createElement("div");
   const h2 = document.createElement("h2");
+  const formDiv = document.createElement("div");
+
+  background.classList.add("background", "hidden");
 
   h2.innerText = "Add New Task";
   h2.classList.add("form__h2");
@@ -141,6 +149,7 @@ function Form(action) {
   buttons.classList.add("form__buttons", "flex");
 
   form.append(h2, addInput, dateRadioDiv, buttons);
+  formDiv.append(form, background);
 
-  return form;
+  return formDiv;
 }
