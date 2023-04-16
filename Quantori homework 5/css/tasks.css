@@ -30,7 +30,7 @@
 .tasks__check {
   width: 1.3125rem;
   height: 1.3125rem;
-  border: 2px solid #d3d3d3;
+  border: 2px solid var(--light-gray-color);
   padding: 0.0625rem;
   border-radius: 4px;
   cursor: pointer;
@@ -51,36 +51,36 @@
 }
 .tasks__info--work,
 .form__radio--work {
-  color: #9747ff;
-  background-color: #e8d7ff;
+  color: var(--purple-color);
+  background-color: var(--light-purple-color);
   border-radius: 5px;
   padding: 0.14rem 0.625rem;
   cursor: pointer;
 }
 .tasks__info--other,
 .form__radio--other {
-  color: #ea8c00;
-  background-color: #ffecc7;
+  color: var(--orange-color);
+  background-color: var(--light-orange-color);
   border-radius: 5px;
   padding: 0.14rem 0.625rem;
   cursor: pointer;
 }
 .tasks__info--home,
 .form__radio--home {
-  color: #639462;
-  background-color: #e2f6e2;
+  color: var(--green-color);
+  background-color: var(--light-green-color);
   border-radius: 5px;
   padding: 0.14rem 0.625rem;
   cursor: pointer;
 }
 .tasks__info--health,
 .form__radio--health {
-  color: #0053cf;
-  background-color: #3c86f44f;
+  color: var(--blue-color);
+  background-color: var(--light-blue-color);
   border-radius: 5px;
   padding: 0.14rem 0.625rem;
   cursor: pointer;
 }
 .tasks__info--time {
-  color: #838383;
+  color: var(--gray-color);
 }
