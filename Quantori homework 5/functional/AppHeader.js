@@ -68,14 +68,14 @@ function Weather() {
       const data = await response.json();
       city = data.address.city;
       const weatherRes = await fetch(
-        `http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${key}&q=${city}&aqi=no`
       );
       const weatherData = await weatherRes.json();
       setWeatherData(weatherData);
     },
     async () => {
       const weatherRes = await fetch(
-        `http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${key}&q=${city}&aqi=no`
       );
       const weatherData = await weatherRes.json();
       setWeatherData(weatherData);
