@@ -91,3 +91,10 @@ function filterCompletedTasks(tasks, search) {
       return dateA - dateB;
     });
 }
+
+export {
+  convertDate,
+  addLisenersToButtons,
+  filterCompletedTasks,
+  filterUncompletedTasks,
+};

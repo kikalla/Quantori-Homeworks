@@ -1,3 +1,7 @@
+import { convertDate, addLisenersToButtons } from "./helpers.js";
+import { filterCompletedTasks } from "./helpers.js";
+import state from "./state.js";
+
 function Completed({ completedTasks: tasks, removeTask, markTask }) {
   const listTasks = tasks
     .map(
@@ -48,6 +52,8 @@ function Completed({ completedTasks: tasks, removeTask, markTask }) {
 function renderCompletedTasks(tasks, removeTask, markTask) {
   const appContainer = document.querySelector(".completed-tasks");
   appContainer.innerHTML = "";
-  const completedTasks = filterCompletedTasks(tasks, search);
+  const completedTasks = filterCompletedTasks(tasks, state.search);
   appContainer.append(Completed({ completedTasks, removeTask, markTask }));
 }
+
+export { Completed, renderCompletedTasks };

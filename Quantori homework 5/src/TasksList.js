@@ -1,3 +1,7 @@
+import { convertDate, addLisenersToButtons } from "./helpers.js";
+import { filterUncompletedTasks } from "./helpers.js";
+import state from "./state.js";
+
 function List({ uncompletedTasks: tasks, removeTask, markTask }) {
   const listTasks = tasks
     .map(
@@ -18,27 +22,29 @@ function List({ uncompletedTasks: tasks, removeTask, markTask }) {
     )
     .join("");
 
-  const div = document.createElement("div");
-  const ul = document.createElement("ul");
-  const h2 = document.createElement("h2");
+  const tasksWrapper = document.createElement("div");
+  const tasksList = document.createElement("ul");
+  const tasksTitle = document.createElement("h2");
 
-  h2.innerText = "All Tasks";
-  h2.classList.add("tasks__h2");
-  ul.classList.add("tasks__ul", "flex");
-  ul.innerHTML = listTasks;
-  div.classList.add("tasks");
+  tasksTitle.innerText = "All Tasks";
+  tasksTitle.classList.add("tasks__title");
+  tasksList.classList.add("tasks__ul", "flex");
+  tasksList.innerHTML = listTasks;
+  tasksWrapper.classList.add("tasks");
 
-  div.append(h2, ul);
+  tasksWrapper.append(tasksTitle, tasksList);
 
   addLisenersToButtons(".tasks__delete", ".tasks__list", removeTask);
   addLisenersToButtons(".tasks__check", ".tasks__list", markTask);
 
-  return div;
+  return tasksWrapper;
 }
 
 function renderTasks(tasks, removeTask, markTask) {
   const appContainer = document.querySelector(".tasks");
   appContainer.innerHTML = "";
-  const uncompletedTasks = filterUncompletedTasks(tasks, search);
+  const uncompletedTasks = filterUncompletedTasks(tasks, state.search);
   appContainer.append(List({ uncompletedTasks, removeTask, markTask }));
 }
+
+export { List, renderTasks };

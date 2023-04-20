@@ -1,13 +1,17 @@
+// import
+
 function getFormInputs() {
-  let task = document.querySelector(".form__input");
-  let radios = Array.from(document.getElementsByName("task"));
-  let selectedInput = radios.find((radio) => radio.checked);
-  let date = document.querySelector(".form__date");
+  const task = document.querySelector(".form__input");
+  const radios = Array.from(document.getElementsByName("task"));
+  const selectedInput = radios.find((radio) => radio.checked);
+  const date = document.querySelector(".form__date");
+
   return [task, radios, selectedInput, date];
 }
 
 function checkValidity() {
-  [task, radio, selectedInput, date] = getFormInputs();
+  const [task, radio, selectedInput, date] = getFormInputs();
+
   const addButton = document.querySelector(".form__add-button");
 
   if (date.value && task.value && selectedInput?.value) {
@@ -34,23 +38,26 @@ function AddInput() {
 }
 
 function AddRadioButtons() {
-  let texts = ["health", "work", "home", "other"];
-  let values = ["health", "work", "home", "other"];
-
+  const options = [
+    { title: "health", value: "health" },
+    { title: "work", value: "work" },
+    { title: "home", value: "home" },
+    { title: "other", value: "other" },
+  ];
   const array = [];
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < options.length; i++) {
     const radio = document.createElement("input");
     radio.setAttribute("type", "radio");
     radio.setAttribute("name", "task");
-    radio.setAttribute("value", values[i]);
-    radio.setAttribute("id", values[i]);
+    radio.setAttribute("value", options[i].value);
+    radio.setAttribute("id", options[i].value);
     radio.classList.add("form__radio");
 
     const label = document.createElement("label");
-    label.textContent = texts[i];
-    label.setAttribute("for", values[i]);
-    label.classList.add(`form__radio--${values[i]}`);
+    label.textContent = options[i].title;
+    label.setAttribute("for", options[i].value);
+    label.classList.add(`form__radio--${options[i].value}`);
 
     radio.addEventListener("input", () => {
       checkValidity();
@@ -104,7 +111,7 @@ function AddButton({ text, onClick }) {
   addButton.addEventListener("click", (e) => {
     e.preventDefault();
 
-    [task, radio, selectedInput, date] = getFormInputs();
+    const [task, radio, selectedInput, date] = getFormInputs();
 
     if (checkValidity()) {
       onClick.addTask({
@@ -153,3 +160,5 @@ function Form(action) {
 
   return formDiv;
 }
+
+export default Form;

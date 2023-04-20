@@ -1,3 +1,8 @@
+import state from "./state.js";
+import config from "./config.js";
+import { renderCompletedTasks } from "./CompletedTasks.js";
+import { renderTasks } from "./TasksList.js";
+
 function NewTaskButton() {
   const newTaskButton = document.createElement("button");
   newTaskButton.classList.add("header__button");
@@ -20,10 +25,10 @@ function SearchInput(removeTask, markTask, tasks) {
   searchInput.setAttribute("type", "text");
   searchInput.setAttribute("placeholder", "Search Task");
   searchInput.classList.add("header__input");
-  searchInput.value = search;
+  searchInput.value = state.search;
 
   searchInput.addEventListener("input", (e) => {
-    search = e.target.value;
+    state.search = e.target.value;
     renderTasks(tasks, removeTask, markTask);
     renderCompletedTasks(tasks, removeTask, markTask);
   });
@@ -38,9 +43,9 @@ function Weather() {
   const temp = document.createElement("span");
   const cityEl = document.createElement("span");
 
-  icon.setAttribute("src", weatherSrc);
-  temp.innerText = weatherTemp;
-  cityEl.innerText = weatherCity;
+  icon.setAttribute("src", state.weatherSrc);
+  temp.innerText = state.weatherTemp;
+  cityEl.innerText = state.weatherCity;
 
   weather.append(icon, temp, cityEl);
   weather.classList.add("header__weather", "flex");
@@ -54,9 +59,9 @@ function Weather() {
     temp.innerText = `${weatherData.current.temp_c}°`;
     cityEl.innerText = weatherData.location.name;
 
-    weatherSrc = weatherData.current.condition.icon;
-    weatherTemp = `${weatherData.current.temp_c}° `;
-    weatherCity = weatherData.location.name;
+    state.weatherSrc = weatherData.current.condition.icon;
+    state.weatherTemp = `${weatherData.current.temp_c}° `;
+    state.weatherCity = weatherData.location.name;
   }
 
   navigator.geolocation.getCurrentPosition(
@@ -68,14 +73,14 @@ function Weather() {
       const data = await response.json();
       city = data.address.city;
       const weatherRes = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${key}&q=${city}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${config.key}&q=${city}&aqi=no`
       );
       const weatherData = await weatherRes.json();
       setWeatherData(weatherData);
     },
     async () => {
       const weatherRes = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${key}&q=${city}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${config.key}&q=${city}&aqi=no`
       );
       const weatherData = await weatherRes.json();
       setWeatherData(weatherData);
@@ -107,3 +112,5 @@ function Header(removeTask, markTask, tasks) {
 
   return header;
 }
+
+export default Header;
