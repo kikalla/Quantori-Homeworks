@@ -1,5 +1,3 @@
-// import
-
 function getFormInputs() {
   const task = document.querySelector(".form__input");
   const radios = Array.from(document.getElementsByName("task"));
@@ -38,26 +36,23 @@ function AddInput() {
 }
 
 function AddRadioButtons() {
-  const options = [
-    { title: "health", value: "health" },
-    { title: "work", value: "work" },
-    { title: "home", value: "home" },
-    { title: "other", value: "other" },
-  ];
+  let texts = ["health", "work", "home", "other"];
+  let values = ["health", "work", "home", "other"];
+
   const array = [];
 
-  for (let i = 0; i < options.length; i++) {
+  for (let i = 0; i < 4; i++) {
     const radio = document.createElement("input");
     radio.setAttribute("type", "radio");
     radio.setAttribute("name", "task");
-    radio.setAttribute("value", options[i].value);
-    radio.setAttribute("id", options[i].value);
+    radio.setAttribute("value", values[i]);
+    radio.setAttribute("id", values[i]);
     radio.classList.add("form__radio");
 
     const label = document.createElement("label");
-    label.textContent = options[i].title;
-    label.setAttribute("for", options[i].value);
-    label.classList.add(`form__radio--${options[i].value}`);
+    label.textContent = texts[i];
+    label.setAttribute("for", values[i]);
+    label.classList.add(`form__radio--${values[i]}`);
 
     radio.addEventListener("input", () => {
       checkValidity();

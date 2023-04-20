@@ -6,6 +6,8 @@ import { Completed } from "./CompletedTasks.js";
 import { filterCompletedTasks, filterUncompletedTasks } from "./helpers.js";
 import Header from "./AppHeader.js";
 
+import "../index.css";
+
 function App(tasks, setTasks) {
   function addTask(task) {
     tasks.push(task);

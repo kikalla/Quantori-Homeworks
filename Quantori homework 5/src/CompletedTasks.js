@@ -2,13 +2,16 @@ import { convertDate, addLisenersToButtons } from "./helpers.js";
 import { filterCompletedTasks } from "./helpers.js";
 import state from "./state.js";
 
+import checkSVG from "../images/check.svg";
+import deleteSVG from "../images/delete.svg";
+
 function Completed({ completedTasks: tasks, removeTask, markTask }) {
   const listTasks = tasks
     .map(
       (task) =>
         `<li class="completed-tasks__list flex" id=${task.id}>
               <div class="flex">
-                <img class="completed-tasks__check completed-tasks__check--active" src="images/check.svg">
+                <img class="completed-tasks__check completed-tasks__check--active" src="${checkSVG}">
                 <div class="completed-tasks__containter flex">
                     <h2 class="completed-tasks__text">${task.task}</h2>
                     <div class="completed-tasks__info flex">
@@ -19,7 +22,7 @@ function Completed({ completedTasks: tasks, removeTask, markTask }) {
                     </div>
                 </div>
               </div>
-              <img class="completed-tasks__delete" src="images/delete.svg">
+              <img class="completed-tasks__delete" src="${deleteSVG}">
             </li>`
     )
     .join("");
