@@ -1,16 +1,29 @@
-import state from "./state.js";
-import config from "./config.js";
-import { renderCompletedTasks } from "./CompletedTasks.js";
-import { renderTasks } from "./TasksList.js";
+import state from "./state";
+import config from "./config";
+import { renderCompletedTasks } from "./CompletedTasks";
+import { renderTasks } from "./TasksList";
+import { Task } from "./state";
 
-function NewTaskButton() {
+interface weatherResponse {
+  location: {
+    name: string;
+  };
+  current: {
+    temp_c: number;
+    condition: {
+      icon: string;
+    };
+  };
+}
+
+function NewTaskButton(): HTMLButtonElement {
   const newTaskButton = document.createElement("button");
   newTaskButton.classList.add("header__button");
   newTaskButton.innerText = "+ New Task";
 
   newTaskButton.addEventListener("click", (e) => {
-    const form = document.querySelector(".form");
-    const background = document.querySelector(".background");
+    const form = document.querySelector(".form")!;
+    const background = document.querySelector(".background")!;
 
     e.preventDefault();
     form.classList.remove("hidden");
@@ -20,14 +33,14 @@ function NewTaskButton() {
   return newTaskButton;
 }
 
-function SearchInput(removeTask, markTask, tasks) {
+function SearchInput(removeTask: Function, markTask: Function, tasks: Task[]) {
   const searchInput = document.createElement("input");
   searchInput.setAttribute("type", "text");
   searchInput.setAttribute("placeholder", "Search Task");
   searchInput.classList.add("header__input");
   searchInput.value = state.search;
 
-  searchInput.addEventListener("input", (e) => {
+  searchInput.addEventListener("input", (e: any) => {
     state.search = e.target.value;
     renderTasks(tasks, removeTask, markTask);
     renderCompletedTasks(tasks, removeTask, markTask);
@@ -54,7 +67,7 @@ function Weather() {
 
   let city = "Tbilisi";
 
-  function setWeatherData(weatherData) {
+  function setWeatherData(weatherData: weatherResponse) {
     icon.setAttribute("src", weatherData.current.condition.icon);
     temp.innerText = `${weatherData.current.temp_c}°`;
     cityEl.innerText = weatherData.location.name;
@@ -72,6 +85,7 @@ function Weather() {
       );
       const data = await response.json();
       city = data.address.city;
+
       const weatherRes = await fetch(
         `https://api.weatherapi.com/v1/current.json?key=${config.key}&q=${city}&aqi=no`
       );
@@ -90,7 +104,7 @@ function Weather() {
   return weather;
 }
 
-function Header(removeTask, markTask, tasks) {
+function Header(removeTask: Function, markTask: Function, tasks: Task[]) {
   const header = document.createElement("header");
   const h1 = document.createElement("h1");
   const searchInput = SearchInput(removeTask, markTask, tasks);

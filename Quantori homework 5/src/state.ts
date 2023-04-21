@@ -1,7 +1,15 @@
-import config from "./config.js";
-import App from "./index.js";
+import config from "./config";
+import App from "./index";
 
-let state = null;
+export interface Task {
+  task: string;
+  info: string;
+  date: string;
+  id: number;
+  completed: boolean;
+}
+
+let state: any = null;
 let search = "";
 let weatherSrc = "";
 let weatherCity = "";
@@ -16,10 +24,10 @@ let weatherTemp = "";
   })();
 })();
 
-function useState(initialValue) {
+function useState(initialValue: any): [any, Function] {
   state = state || initialValue;
 
-  function setValue(newValue) {
+  function setValue(newValue: any) {
     state = newValue;
     renderApp(state, setValue);
   }
@@ -27,10 +35,12 @@ function useState(initialValue) {
   return [state, setValue];
 }
 
-function renderApp(tasks, setTasks) {
+function renderApp(tasks: Task[], setTasks: Function) {
   const appContainer = document.querySelector("body");
-  appContainer.innerHTML = "";
-  appContainer.append(App(tasks, setTasks));
+  if (appContainer) {
+    appContainer.innerHTML = "";
+    appContainer.append(App(tasks, setTasks));
+  }
 }
 
 export default {

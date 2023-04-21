@@ -1,11 +1,20 @@
-import { convertDate, addLisenersToButtons } from "./helpers.js";
-import { filterUncompletedTasks } from "./helpers.js";
-import state from "./state.js";
+import { convertDate, addLisenersToButtons } from "./helpers";
+import { filterUncompletedTasks } from "./helpers";
+import state from "./state";
+import { Task } from "./state";
 
 import checkSVG from "../images/check.svg";
 import deleteSVG from "../images/delete.svg";
 
-function List({ uncompletedTasks: tasks, removeTask, markTask }) {
+function List({
+  uncompletedTasks: tasks,
+  removeTask,
+  markTask,
+}: {
+  uncompletedTasks: Task[];
+  removeTask: Function;
+  markTask: Function;
+}) {
   const listTasks = tasks
     .map(
       (task) =>
@@ -43,8 +52,8 @@ function List({ uncompletedTasks: tasks, removeTask, markTask }) {
   return tasksWrapper;
 }
 
-function renderTasks(tasks, removeTask, markTask) {
-  const appContainer = document.querySelector(".tasks");
+function renderTasks(tasks: Task[], removeTask: Function, markTask: Function) {
+  const appContainer = document.querySelector(".tasks")!;
   appContainer.innerHTML = "";
   const uncompletedTasks = filterUncompletedTasks(tasks, state.search);
   appContainer.append(List({ uncompletedTasks, removeTask, markTask }));

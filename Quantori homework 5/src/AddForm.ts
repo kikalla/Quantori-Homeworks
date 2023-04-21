@@ -1,16 +1,25 @@
-function getFormInputs() {
-  const task = document.querySelector(".form__input");
-  const radios = Array.from(document.getElementsByName("task"));
-  const selectedInput = radios.find((radio) => radio.checked);
-  const date = document.querySelector(".form__date");
+function getFormInputs(): [
+  HTMLInputElement,
+  HTMLInputElement[],
+  HTMLInputElement,
+  HTMLInputElement
+] {
+  const task = document.querySelector(".form__input")! as HTMLInputElement;
+  const radios = Array.from(
+    document.getElementsByName("task")!
+  ) as HTMLInputElement[];
+  const selectedInput = radios.find(
+    (radio) => radio.checked
+  )! as HTMLInputElement;
+  const date = document.querySelector(".form__date")! as HTMLInputElement;
 
   return [task, radios, selectedInput, date];
 }
 
-function checkValidity() {
+function checkValidity(): boolean {
   const [task, radio, selectedInput, date] = getFormInputs();
 
-  const addButton = document.querySelector(".form__add-button");
+  const addButton = document.querySelector(".form__add-button")!;
 
   if (date.value && task.value && selectedInput?.value) {
     addButton.classList.add("form__add-button--active", "pointer");
@@ -25,7 +34,7 @@ function AddInput() {
   const addInput = document.createElement("input");
   addInput.setAttribute("type", "text");
   addInput.setAttribute("placeholder", "Task Title");
-  addInput.setAttribute("maxlength", 40);
+  addInput.setAttribute("maxlength", "40");
   addInput.classList.add("form__input");
 
   addInput.addEventListener("input", () => {
@@ -79,13 +88,16 @@ function AddDate() {
   return addDate;
 }
 
-function CancelButton(background, form) {
+function CancelButton(
+  background: HTMLElement,
+  form: HTMLFormElement
+): HTMLElement {
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "Cancel";
   cancelButton.classList.add("form__cancel-button");
 
-  function listenCloseEvent(element) {
-    element.addEventListener("click", (e) => {
+  function listenCloseEvent(element: HTMLElement) {
+    element.addEventListener("click", (e: Event) => {
       e.preventDefault();
       form.classList.add("hidden");
       background.classList.add("hidden");
@@ -97,7 +109,13 @@ function CancelButton(background, form) {
   return cancelButton;
 }
 
-function AddButton({ text, onClick }) {
+function AddButton({
+  text,
+  onClick,
+}: {
+  text: string;
+  onClick: Function;
+}): HTMLButtonElement {
   const addButton = document.createElement("button");
   addButton.innerHTML = text;
   addButton.setAttribute("type", "submit");
@@ -109,22 +127,22 @@ function AddButton({ text, onClick }) {
     const [task, radio, selectedInput, date] = getFormInputs();
 
     if (checkValidity()) {
-      onClick.addTask({
+      onClick({
         task: task.value,
         info: selectedInput.value,
         date: date.value,
         id: Math.random(),
         completed: false,
       });
-      document.querySelector(".form").classList.add("hidden");
-      document.querySelector(".background").classList.add("hidden");
+      document.querySelector(".form")!.classList.add("hidden");
+      document.querySelector(".background")!.classList.add("hidden");
     }
   });
 
   return addButton;
 }
 
-function Form(action) {
+function Form(action: Function) {
   const form = document.createElement("form");
   form.classList.add("form", "flex", "hidden");
 

@@ -1,24 +1,31 @@
 {
   "tasks": [
     {
-      "task": "bbbbbb",
-      "info": "other",
-      "date": "2023-05-05",
-      "id": 0.8709788685364322,
-      "completed": false
-    },
-    {
       "task": "asdsad",
       "info": "work",
       "date": "2023-04-12",
       "id": 0.7273614776484634,
-      "completed": false
+      "completed": true
     },
     {
       "task": "asd",
       "info": "home",
       "date": "2023-04-20",
       "id": 0.02096575436653314,
+      "completed": true
+    },
+    {
+      "task": "asdasd",
+      "info": "work",
+      "date": "2023-04-04",
+      "id": 0.02596681324750505,
+      "completed": false
+    },
+    {
+      "task": "123",
+      "info": "work",
+      "date": "2023-04-05",
+      "id": 0.8575462569415533,
       "completed": false
     }
   ]
