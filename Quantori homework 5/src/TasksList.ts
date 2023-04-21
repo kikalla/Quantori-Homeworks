@@ -8,12 +8,12 @@ import deleteSVG from "../images/delete.svg";
 
 function List({
   uncompletedTasks: tasks,
-  removeTask,
-  markTask,
+  deleteTask,
+  updateTask,
 }: {
   uncompletedTasks: Task[];
-  removeTask: Function;
-  markTask: Function;
+  deleteTask: Function;
+  updateTask: Function;
 }) {
   const listTasks = tasks
     .map(
@@ -46,17 +46,21 @@ function List({
 
   tasksWrapper.append(tasksTitle, tasksList);
 
-  addLisenersToButtons(".tasks__delete", ".tasks__list", removeTask);
-  addLisenersToButtons(".tasks__check", ".tasks__list", markTask);
+  addLisenersToButtons(".tasks__delete", ".tasks__list", deleteTask);
+  addLisenersToButtons(".tasks__check", ".tasks__list", updateTask);
 
   return tasksWrapper;
 }
 
-function renderTasks(tasks: Task[], removeTask: Function, markTask: Function) {
+function renderTasks(
+  tasks: Task[],
+  deleteTask: Function,
+  updateTask: Function
+) {
   const appContainer = document.querySelector(".tasks")!;
   appContainer.innerHTML = "";
   const uncompletedTasks = filterUncompletedTasks(tasks, state.search);
-  appContainer.append(List({ uncompletedTasks, removeTask, markTask }));
+  appContainer.append(List({ uncompletedTasks, deleteTask, updateTask }));
 }
 
 export { List, renderTasks };

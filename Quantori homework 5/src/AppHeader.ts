@@ -16,6 +16,13 @@ interface weatherResponse {
   };
 }
 
+interface navigationPosition {
+  coords: {
+    latitude: number;
+    longitude: number;
+  };
+}
+
 function NewTaskButton(): HTMLButtonElement {
   const newTaskButton = document.createElement("button");
   newTaskButton.classList.add("header__button");
@@ -33,7 +40,11 @@ function NewTaskButton(): HTMLButtonElement {
   return newTaskButton;
 }
 
-function SearchInput(removeTask: Function, markTask: Function, tasks: Task[]) {
+function SearchInput(
+  deleteTask: Function,
+  updateTask: Function,
+  tasks: Task[]
+) {
   const searchInput = document.createElement("input");
   searchInput.setAttribute("type", "text");
   searchInput.setAttribute("placeholder", "Search Task");
@@ -42,8 +53,8 @@ function SearchInput(removeTask: Function, markTask: Function, tasks: Task[]) {
 
   searchInput.addEventListener("input", (e: any) => {
     state.search = e.target.value;
-    renderTasks(tasks, removeTask, markTask);
-    renderCompletedTasks(tasks, removeTask, markTask);
+    renderTasks(tasks, deleteTask, updateTask);
+    renderCompletedTasks(tasks, deleteTask, updateTask);
   });
 
   return searchInput;
@@ -65,8 +76,6 @@ function Weather() {
   temp.classList.add("header__weather--temp");
   cityEl.classList.add("header__weather--city");
 
-  let city = "Tbilisi";
-
   function setWeatherData(weatherData: weatherResponse) {
     icon.setAttribute("src", weatherData.current.condition.icon);
     temp.innerText = `${weatherData.current.temp_c}°`;
@@ -76,38 +85,52 @@ function Weather() {
     state.weatherTemp = `${weatherData.current.temp_c}° `;
     state.weatherCity = weatherData.location.name;
   }
-
-  navigator.geolocation.getCurrentPosition(
-    async (position) => {
-      const { latitude, longitude } = position.coords;
-      const response = await fetch(
+  const getWeatherForUserLocation = async (position: navigationPosition) => {
+    const { latitude, longitude } = position.coords;
+    try {
+      const locationResponse = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
       );
-      const data = await response.json();
-      city = data.address.city;
+      const locationData = await locationResponse.json();
+      const city = locationData.address.city;
 
       const weatherRes = await fetch(
         `https://api.weatherapi.com/v1/current.json?key=${config.key}&q=${city}&aqi=no`
       );
+      if (weatherRes.status !== 200) throw new Error();
+
       const weatherData = await weatherRes.json();
       setWeatherData(weatherData);
-    },
-    async () => {
-      const weatherRes = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${config.key}&q=${city}&aqi=no`
-      );
-      const weatherData = await weatherRes.json();
-      setWeatherData(weatherData);
+    } catch {
+      temp.innerText = `Something Went Wrong`;
     }
+  };
+
+  const getWeatherForDefaultLocation = async () => {
+    try {
+      const weatherRes = await fetch(
+        `https://api.weatherapi.com/v1/current.json?key=${config.key}&q=${config.DEFAULT_CITY}&aqi=no`
+      );
+      if (weatherRes.status !== 200) throw new Error();
+      const weatherData = await weatherRes.json();
+      setWeatherData(weatherData);
+    } catch {
+      temp.innerText = `Something Went Wrong`;
+    }
+  };
+
+  navigator.geolocation.getCurrentPosition(
+    getWeatherForUserLocation,
+    getWeatherForDefaultLocation
   );
 
   return weather;
 }
 
-function Header(removeTask: Function, markTask: Function, tasks: Task[]) {
+function Header(deleteTask: Function, updateTask: Function, tasks: Task[]) {
   const header = document.createElement("header");
   const h1 = document.createElement("h1");
-  const searchInput = SearchInput(removeTask, markTask, tasks);
+  const searchInput = SearchInput(deleteTask, updateTask, tasks);
   const newTaskButton = NewTaskButton();
   const searchDiv = document.createElement("div");
 

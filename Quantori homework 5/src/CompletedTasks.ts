@@ -8,12 +8,12 @@ import deleteSVG from "../images/delete.svg";
 
 function Completed({
   completedTasks: tasks,
-  removeTask,
-  markTask,
+  deleteTask,
+  updateTask,
 }: {
   completedTasks: Task[];
-  removeTask: Function;
-  markTask: Function;
+  deleteTask: Function;
+  updateTask: Function;
 }) {
   const listTasks = tasks
     .map(
@@ -51,25 +51,25 @@ function Completed({
   addLisenersToButtons(
     ".completed-tasks__delete",
     ".completed-tasks__list",
-    removeTask
+    deleteTask
   );
   addLisenersToButtons(
     ".completed-tasks__check",
     ".completed-tasks__list",
-    markTask
+    updateTask
   );
 
   return div;
 }
 function renderCompletedTasks(
   tasks: Task[],
-  removeTask: Function,
-  markTask: Function
+  deleteTask: Function,
+  updateTask: Function
 ) {
   const appContainer = document.querySelector(".completed-tasks")!;
   appContainer.innerHTML = "";
   const completedTasks = filterCompletedTasks(tasks, state.search);
-  appContainer.append(Completed({ completedTasks, removeTask, markTask }));
+  appContainer.append(Completed({ completedTasks, deleteTask, updateTask }));
 }
 
 export { Completed, renderCompletedTasks };

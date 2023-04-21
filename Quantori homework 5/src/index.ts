@@ -23,13 +23,13 @@ function App(tasks: Task[], setTasks: Function) {
     });
   }
 
-  function removeTask(removeTask: Task) {
+  function deleteTask(task: Task) {
     const selectedTask = tasks.find(
-      (task) => Number(task.id) === Number(removeTask.id)
+      (task) => Number(task.id) === Number(task.id)
     )!;
     tasks = tasks.filter((task) => task.id !== selectedTask.id);
     state.renderApp(tasks, setTasks);
-    fetch(`${config.DBurl}tasks/${removeTask.id}`, {
+    fetch(`${config.DBurl}tasks/${task.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -37,9 +37,9 @@ function App(tasks: Task[], setTasks: Function) {
     });
   }
 
-  function markTask(markedTask: Task) {
+  function updateTask(task: Task) {
     const selectedTask = tasks.find(
-      (task) => Number(task.id) === Number(markedTask.id)
+      (task) => Number(task.id) === Number(task.id)
     )!;
 
     selectedTask.completed = !selectedTask.completed;
@@ -59,9 +59,9 @@ function App(tasks: Task[], setTasks: Function) {
 
   const div = document.createElement("div");
   const form = Form(addTask);
-  const header = Header(removeTask, markTask, tasks);
-  const list = List({ uncompletedTasks, removeTask, markTask });
-  const completed = Completed({ completedTasks, removeTask, markTask });
+  const header = Header(deleteTask, updateTask, tasks);
+  const list = List({ uncompletedTasks, deleteTask, updateTask });
+  const completed = Completed({ completedTasks, deleteTask, updateTask });
 
   div.append(header, list, completed, form);
 
