@@ -1,4 +1,4 @@
-import { Task } from "./state";
+import { Task } from "./interfaces";
 
 function convertDate(dateString: string) {
   const dateParts = dateString.split("-");

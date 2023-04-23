@@ -5,7 +5,7 @@ import { List } from "./TasksList";
 import { Completed } from "./CompletedTasks";
 import { filterCompletedTasks, filterUncompletedTasks } from "./helpers";
 import Header from "./AppHeader";
-import { Task } from "./state";
+import { Task } from "./interfaces";
 
 import "../index.css";
 

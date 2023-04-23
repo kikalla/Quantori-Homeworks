@@ -1,13 +1,6 @@
 import config from "./config";
 import App from "./index";
-
-export interface Task {
-  task: string;
-  info: string;
-  date: string;
-  id: number;
-  completed: boolean;
-}
+import { Task } from "./interfaces";
 
 let state: any = null;
 let search = "";

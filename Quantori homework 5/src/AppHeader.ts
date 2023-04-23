@@ -2,26 +2,7 @@ import state from "./state";
 import config from "./config";
 import { renderCompletedTasks } from "./CompletedTasks";
 import { renderTasks } from "./TasksList";
-import { Task } from "./state";
-
-interface weatherResponse {
-  location: {
-    name: string;
-  };
-  current: {
-    temp_c: number;
-    condition: {
-      icon: string;
-    };
-  };
-}
-
-interface navigationPosition {
-  coords: {
-    latitude: number;
-    longitude: number;
-  };
-}
+import { Task, weatherResponse, navigationPosition } from "./interfaces";
 
 function NewTaskButton(): HTMLButtonElement {
   const newTaskButton = document.createElement("button");

@@ -1,7 +1,7 @@
 import { convertDate, addLisenersToButtons } from "./helpers";
 import { filterCompletedTasks } from "./helpers";
 import state from "./state";
-import { Task } from "./state";
+import { Task } from "./interfaces";
 
 import checkSVG from "../images/check.svg";
 import deleteSVG from "../images/delete.svg";
