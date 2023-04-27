@@ -1,4 +1,6 @@
-function convertDate(dateString) {
+import { Task } from "./interfaces";
+
+function convertDate(dateString: string) {
   const dateParts = dateString.split("-");
   const year = parseInt(dateParts[0]);
   const month = parseInt(dateParts[1]) - 1;
@@ -44,7 +46,11 @@ function convertDate(dateString) {
   }
 }
 
-function addLisenersToButtons(btnClass, taskClass, action) {
+function addLisenersToButtons(
+  btnClass: string,
+  taskClass: string,
+  action: Function
+) {
   let promise = new Promise(function (resolve, reject) {
     let interval = setInterval(() => {
       if (document.querySelectorAll(btnClass)) {
@@ -53,8 +59,8 @@ function addLisenersToButtons(btnClass, taskClass, action) {
       } else reject();
     }, 0);
   });
-  promise.then((deleteIcons) => {
-    deleteIcons.forEach((btn) => {
+  promise.then((deleteIcons: any) => {
+    deleteIcons.forEach((btn: HTMLElement) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         const task = btn.closest(taskClass);
@@ -64,7 +70,7 @@ function addLisenersToButtons(btnClass, taskClass, action) {
   });
 }
 
-function filterUncompletedTasks(tasks, search) {
+function filterUncompletedTasks(tasks: Task[], search: string) {
   return tasks
     .filter((task) => {
       if (!task.completed && task.task.includes(search)) {
@@ -72,13 +78,13 @@ function filterUncompletedTasks(tasks, search) {
       }
     })
     .sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
+      const dateA: any = new Date(a.date);
+      const dateB: any = new Date(b.date);
       return dateA - dateB;
     });
 }
 
-function filterCompletedTasks(tasks, search) {
+function filterCompletedTasks(tasks: Task[], search: string) {
   return tasks
     .filter((task) => {
       if (task.completed && task.task.includes(search)) {
@@ -86,8 +92,15 @@ function filterCompletedTasks(tasks, search) {
       }
     })
     .sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
+      const dateA: any = new Date(a.date);
+      const dateB: any = new Date(b.date);
       return dateA - dateB;
     });
 }
+
+export {
+  convertDate,
+  addLisenersToButtons,
+  filterCompletedTasks,
+  filterUncompletedTasks,
+};

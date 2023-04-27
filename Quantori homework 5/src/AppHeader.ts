@@ -1,11 +1,17 @@
-function NewTaskButton() {
+import state from "./state";
+import config from "./config";
+import { renderCompletedTasks } from "./CompletedTasks";
+import { renderTasks } from "./TasksList";
+import { Task, weatherResponse, navigationPosition } from "./interfaces";
+
+function NewTaskButton(): HTMLButtonElement {
   const newTaskButton = document.createElement("button");
   newTaskButton.classList.add("header__button");
   newTaskButton.innerText = "+ New Task";
 
   newTaskButton.addEventListener("click", (e) => {
-    const form = document.querySelector(".form");
-    const background = document.querySelector(".background");
+    const form = document.querySelector(".form")!;
+    const background = document.querySelector(".background")!;
 
     e.preventDefault();
     form.classList.remove("hidden");
@@ -15,17 +21,21 @@ function NewTaskButton() {
   return newTaskButton;
 }
 
-function SearchInput(removeTask, markTask, tasks) {
+function SearchInput(
+  deleteTask: Function,
+  updateTask: Function,
+  tasks: Task[]
+) {
   const searchInput = document.createElement("input");
   searchInput.setAttribute("type", "text");
   searchInput.setAttribute("placeholder", "Search Task");
   searchInput.classList.add("header__input");
-  searchInput.value = search;
+  searchInput.value = state.search;
 
-  searchInput.addEventListener("input", (e) => {
-    search = e.target.value;
-    renderTasks(tasks, removeTask, markTask);
-    renderCompletedTasks(tasks, removeTask, markTask);
+  searchInput.addEventListener("input", (e: any) => {
+    state.search = e.target.value;
+    renderTasks(tasks, deleteTask, updateTask);
+    renderCompletedTasks(tasks, deleteTask, updateTask);
   });
 
   return searchInput;
@@ -38,57 +48,70 @@ function Weather() {
   const temp = document.createElement("span");
   const cityEl = document.createElement("span");
 
-  icon.setAttribute("src", weatherSrc);
-  temp.innerText = weatherTemp;
-  cityEl.innerText = weatherCity;
+  icon.setAttribute("src", state.weatherSrc);
+  temp.innerText = state.weatherTemp;
+  cityEl.innerText = state.weatherCity;
 
   weather.append(icon, temp, cityEl);
   weather.classList.add("header__weather", "flex");
   temp.classList.add("header__weather--temp");
   cityEl.classList.add("header__weather--city");
 
-  let city = "Tbilisi";
-
-  function setWeatherData(weatherData) {
+  function setWeatherData(weatherData: weatherResponse) {
     icon.setAttribute("src", weatherData.current.condition.icon);
     temp.innerText = `${weatherData.current.temp_c}°`;
     cityEl.innerText = weatherData.location.name;
 
-    weatherSrc = weatherData.current.condition.icon;
-    weatherTemp = `${weatherData.current.temp_c}° `;
-    weatherCity = weatherData.location.name;
+    state.weatherSrc = weatherData.current.condition.icon;
+    state.weatherTemp = `${weatherData.current.temp_c}° `;
+    state.weatherCity = weatherData.location.name;
   }
-
-  navigator.geolocation.getCurrentPosition(
-    async (position) => {
-      const { latitude, longitude } = position.coords;
-      const response = await fetch(
+  const getWeatherForUserLocation = async (position: navigationPosition) => {
+    const { latitude, longitude } = position.coords;
+    try {
+      const locationResponse = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
       );
-      const data = await response.json();
-      city = data.address.city;
+      const locationData = await locationResponse.json();
+      const city = locationData.address.city;
+
       const weatherRes = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${key}&q=${city}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${config.key}&q=${city}&aqi=no`
       );
+      if (weatherRes.status !== 200) throw new Error();
+
       const weatherData = await weatherRes.json();
       setWeatherData(weatherData);
-    },
-    async () => {
-      const weatherRes = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${key}&q=${city}&aqi=no`
-      );
-      const weatherData = await weatherRes.json();
-      setWeatherData(weatherData);
+    } catch {
+      temp.innerText = `Something Went Wrong`;
     }
+  };
+
+  const getWeatherForDefaultLocation = async () => {
+    try {
+      const weatherRes = await fetch(
+        `https://api.weatherapi.com/v1/current.json?key=${config.key}&q=${config.DEFAULT_CITY}&aqi=no`
+      );
+      if (weatherRes.status !== 200) throw new Error();
+      const weatherData = await weatherRes.json();
+      setWeatherData(weatherData);
+    } catch {
+      temp.innerText = `Something Went Wrong`;
+    }
+  };
+
+  navigator.geolocation.getCurrentPosition(
+    getWeatherForUserLocation,
+    getWeatherForDefaultLocation
   );
 
   return weather;
 }
 
-function Header(removeTask, markTask, tasks) {
+function Header(deleteTask: Function, updateTask: Function, tasks: Task[]) {
   const header = document.createElement("header");
   const h1 = document.createElement("h1");
-  const searchInput = SearchInput(removeTask, markTask, tasks);
+  const searchInput = SearchInput(deleteTask, updateTask, tasks);
   const newTaskButton = NewTaskButton();
   const searchDiv = document.createElement("div");
 
@@ -107,3 +130,5 @@ function Header(removeTask, markTask, tasks) {
 
   return header;
 }
+
+export default Header;
