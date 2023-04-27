@@ -12,7 +12,7 @@
   justify-content: flex-start;
   gap: 1.875rem;
 }
-.completed-tasks__h2 {
+.completed-tasks__title {
   color: black;
 }
 .completed-tasks__list {
