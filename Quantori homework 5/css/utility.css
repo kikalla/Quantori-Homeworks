@@ -3,9 +3,6 @@
 .hidden {
   display: none;
 }
-.form__add-button--active {
-  background-color: var(--lighter-blue-color);
-}
 .pointer {
   cursor: pointer;
 }
