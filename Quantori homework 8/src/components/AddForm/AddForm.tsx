@@ -148,11 +148,9 @@ const AddForm: React.FC<props> = (props) => {
           />
         </div>
         <div className="form__buttons flex">
-          <button
-            className="form__cancel-button"
-            onClick={changeFormVisibility}>
+          <div className="form__cancel-button" onClick={changeFormVisibility}>
             Cancel
-          </button>
+          </div>
           <button type="submit" className={buttonClass}>
             Add task
           </button>
