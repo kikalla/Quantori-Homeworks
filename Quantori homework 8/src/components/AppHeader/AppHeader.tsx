@@ -3,12 +3,12 @@ import "./header.css";
 import { DEFAULT_CITY, key } from "../../config";
 import React from "react";
 
-interface props {
+interface Props {
   setFormVisible: React.Dispatch<React.SetStateAction<boolean>>;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const AppHeader: React.FC<props> = (props) => {
+const AppHeader: React.FC<Props> = (props) => {
   const changeFormVisibility = () => {
     props.setFormVisible((formVisible) => !formVisible);
   };
@@ -17,7 +17,7 @@ const AppHeader: React.FC<props> = (props) => {
     props.setSearch(event.target.value);
   };
 
-  interface weatherResponse {
+  interface WeatherResponse {
     location: {
       name: string;
     };
@@ -29,7 +29,7 @@ const AppHeader: React.FC<props> = (props) => {
     };
   }
 
-  interface navigationPosition {
+  interface NavigationPosition {
     coords: {
       latitude: number;
       longitude: number;
@@ -43,7 +43,7 @@ const AppHeader: React.FC<props> = (props) => {
   useEffect(() => {
     (async () => {
       const getWeatherForUserLocation = async (
-        position: navigationPosition
+        position: NavigationPosition
       ) => {
         const { latitude, longitude } = position.coords;
         try {
@@ -58,7 +58,7 @@ const AppHeader: React.FC<props> = (props) => {
           );
           if (weatherRes.status !== 200) throw new Error();
 
-          const weatherData: weatherResponse = await weatherRes.json();
+          const weatherData: WeatherResponse = await weatherRes.json();
 
           setTemp(`${weatherData.current.temp_c}° `);
           setCity(locationCity);
@@ -75,7 +75,7 @@ const AppHeader: React.FC<props> = (props) => {
             `https://api.weatherapi.com/v1/current.json?key=${key}&q=${DEFAULT_CITY}&aqi=no`
           );
           if (weatherRes.status !== 200) throw new Error();
-          const weatherData: weatherResponse = await weatherRes.json();
+          const weatherData: WeatherResponse = await weatherRes.json();
           setTemp(`${weatherData.current.temp_c}° `);
           setWeatherIcon(weatherData.current.condition.icon);
         } catch {

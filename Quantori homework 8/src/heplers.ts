@@ -32,8 +32,9 @@ function filterTasks(tasks: Task[], completed: boolean, search: string) {
       );
     })
     .sort((a, b) => {
-      const dateA: any = new Date(a.date);
-      const dateB: any = new Date(b.date);
+      const dateA: number = new Date(a.date).getTime();
+      const dateB: number = new Date(b.date).getTime();
+
       return dateA - dateB;
     });
 }

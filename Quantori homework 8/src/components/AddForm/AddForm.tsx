@@ -1,28 +1,28 @@
 import React, { useReducer } from "react";
 import "./form.css";
 
-interface props {
+interface Props {
   setFormVisible: React.Dispatch<React.SetStateAction<boolean>>;
   addTask: Function;
 }
 
-const AddForm: React.FC<props> = (props) => {
+const AddForm: React.FC<Props> = (props) => {
   const changeFormVisibility = () => {
     props.setFormVisible((formVisible) => !formVisible);
   };
 
-  interface dispatch {
+  interface Dispatch {
     type: string;
     value: string;
   }
 
-  interface form {
+  interface Form {
     radioValue: string;
     textValue: string;
     dateValue: string;
   }
 
-  const formReducer = (state: form, action: dispatch) => {
+  const formReducer = (state: Form, action: Dispatch) => {
     switch (action.type) {
       case "INPUT":
         return { ...state, radioValue: action.value };

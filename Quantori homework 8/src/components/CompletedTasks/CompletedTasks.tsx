@@ -4,14 +4,14 @@ import TaskItem from "../TaskItem/TaskItem";
 import "./complete-tasks.css";
 import { filterTasks } from "../../heplers";
 
-interface props {
+interface Props {
   tasks: Task[];
   updateTask: Function;
   deleteTask: Function;
   search: string;
 }
 
-const CompletedTasks: React.FC<props> = (props) => {
+const CompletedTasks: React.FC<Props> = (props) => {
   const tasks = filterTasks(props.tasks, true, props.search);
 
   return (

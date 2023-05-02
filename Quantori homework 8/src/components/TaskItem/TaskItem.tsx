@@ -5,14 +5,14 @@ import MarkIcon from "../../assets/MarkIcon";
 import "./taskItem.css";
 import { convertDate } from "../../heplers";
 
-interface props {
+interface Props {
   task: Task;
   completed: boolean;
   updateTask: Function;
   deleteTask: Function;
 }
 
-const TaskItem: React.FC<props> = (props) => {
+const TaskItem: React.FC<Props> = (props) => {
   const { task } = props;
   const completeClass = props.completed ? "completed-" : "";
   const convertedDate = convertDate(task.date);

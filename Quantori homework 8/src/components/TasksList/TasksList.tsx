@@ -4,14 +4,14 @@ import Task from "../../models/Task";
 import TaskItem from "../TaskItem/TaskItem";
 import { filterTasks } from "../../heplers";
 
-interface props {
+interface Props {
   tasks: Task[];
   updateTask: Function;
   deleteTask: Function;
   search: string;
 }
 
-const TasksList: React.FC<props> = (props) => {
+const TasksList: React.FC<Props> = (props) => {
   const tasks = filterTasks(props.tasks, false, props.search);
 
   return (
