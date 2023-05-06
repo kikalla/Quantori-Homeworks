@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 import "./header.css";
 import { DEFAULT_CITY, key } from "../../config";
 import React from "react";
-
+import { useDispatch } from "react-redux";
+import { ThunkDispatch, AnyAction } from "@reduxjs/toolkit";
+import TasksState from "../../models/TasksStore";
+import { formActions } from "../../store/form-slice";
 interface Props {
-  setFormVisible: React.Dispatch<React.SetStateAction<boolean>>;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AppHeader: React.FC<Props> = (props) => {
+  const dispatch: ThunkDispatch<TasksState, unknown, AnyAction> = useDispatch();
+
   const changeFormVisibility = () => {
-    props.setFormVisible((formVisible) => !formVisible);
+    dispatch(formActions.toggleAddFormVisibility({}));
   };
 
   const search = (event: React.ChangeEvent<HTMLInputElement>) => {

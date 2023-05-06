@@ -6,8 +6,6 @@ import { filterTasks } from "../../heplers";
 
 interface Props {
   tasks: Task[];
-  updateTask: Function;
-  deleteTask: Function;
   search: string;
 }
 
@@ -19,13 +17,7 @@ const CompletedTasks: React.FC<Props> = (props) => {
       <h2 className="completed-tasks__title">All Tasks</h2>
       <ul className="completed-tasks__ul flex">
         {tasks.map((task) => (
-          <TaskItem
-            task={task}
-            key={task.id}
-            completed={true}
-            updateTask={props.updateTask}
-            deleteTask={props.deleteTask}
-          />
+          <TaskItem task={task} key={task.id} completed={true} />
         ))}
       </ul>
     </div>
