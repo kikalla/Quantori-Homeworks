@@ -1,38 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import "./App.css";
-import TasksList from "./components/TasksList/TasksList";
-import AppHeader from "./components/AppHeader/AppHeader";
-import AddForm from "./components/AddForm/AddForm";
-import CompletedTasks from "./components/CompletedTasks/CompletedTasks";
-import { getTasksData } from "./store/tasks-actions";
-import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import TasksState from "./models/TasksStore";
-import EditForm from "./components/EditForm/EditForm";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const App: React.FC = (props) => {
-  const [search, setSearch] = useState("");
+import HomePage from "./pages/HomePage/HomePage";
 
-  const dispatch: ThunkDispatch<TasksState, unknown, AnyAction> = useDispatch();
-  const tasks = useSelector((state: any) => state.tasks.tasks);
-  const addFormVisible = useSelector((state: any) => state.form.addFormVisible);
-  const updateFormVisible = useSelector(
-    (state: any) => state.form.updateFormVisible
-  );
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/:info",
+    element: <HomePage />,
+  },
+]);
 
-  useEffect(() => {
-    dispatch(getTasksData());
-  }, [dispatch]);
-
-  return (
-    <div className="App">
-      <AppHeader setSearch={setSearch} />
-      <TasksList tasks={tasks} search={search} />
-      <CompletedTasks tasks={tasks} search={search} />
-      {addFormVisible && <AddForm />}
-      {updateFormVisible && <EditForm />}
-    </div>
-  );
-};
+function App() {
+  return <RouterProvider router={router} />;
+}
 
 export default App;

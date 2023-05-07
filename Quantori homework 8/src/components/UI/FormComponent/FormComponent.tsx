@@ -108,7 +108,7 @@ const AddForm: React.FC<Props> = (props) => {
         <input
           type="text"
           placeholder="Task Title"
-          maxLength={40}
+          maxLength={35}
           className="form__input"
           onChange={handleTextChange}
           value={formState.textValue}

@@ -3,6 +3,7 @@ import TasksState from "../models/TasksStore";
 
 const initialState: TasksState = {
   tasks: [],
+  search: "",
 };
 
 const tasksSlice = createSlice({
@@ -35,6 +36,9 @@ const tasksSlice = createSlice({
         }
         return task;
       });
+    },
+    updateSearch(state, action) {
+      state.search = action.payload.search;
     },
   },
 });

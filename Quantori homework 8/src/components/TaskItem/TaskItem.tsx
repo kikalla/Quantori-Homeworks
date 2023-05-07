@@ -2,6 +2,7 @@ import React from "react";
 import Task from "../../models/Task";
 import DeleteIcon from "../../assets/DeleteIcon";
 import MarkIcon from "../../assets/MarkIcon";
+import EditIcon from "../../assets/EditIcon";
 import "./taskItem.css";
 import { convertDate } from "../../heplers";
 import { useDispatch } from "react-redux";
@@ -53,11 +54,13 @@ const TaskItem: React.FC<Props> = (props) => {
           </div>
         </div>
       </div>
-      <span onClick={deleteHandler}>
-        <DeleteIcon />
-      </span>
-      <span onClick={editHandler}>
-        <DeleteIcon />
+      <span className="flex tasks__icons">
+        <span className="completed-tasks__delete" onClick={deleteHandler}>
+          <DeleteIcon />
+        </span>
+        <span className="completed-tasks__edit" onClick={editHandler}>
+          <EditIcon />
+        </span>
       </span>
     </li>
   );

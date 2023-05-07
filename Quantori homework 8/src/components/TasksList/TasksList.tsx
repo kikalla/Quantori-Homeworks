@@ -3,14 +3,16 @@ import "./tasksList.css";
 import Task from "../../models/Task";
 import TaskItem from "../TaskItem/TaskItem";
 import { filterTasks } from "../../heplers";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 interface Props {
   tasks: Task[];
-  search: string;
 }
 
 const TasksList: React.FC<Props> = (props) => {
-  const tasks = filterTasks(props.tasks, false, props.search);
+  const search = useSelector((state: RootState) => state.tasks.search);
+  const tasks = filterTasks(props.tasks, false, search);
 
   return (
     <div className="tasks">
