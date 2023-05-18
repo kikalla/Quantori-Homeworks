@@ -1,8 +1,9 @@
 const DeleteIcon: React.FC = () => {
   return (
     <svg
-      width="19"
-      height="20"
+      className="completed-tasks__delete"
+      width="14"
+      height="15"
       viewBox="0 0 14 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

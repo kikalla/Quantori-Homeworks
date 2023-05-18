@@ -42,32 +42,3 @@
   color: var(--blue-color);
   background-color: var(--transparent-blue-color);
 }
-
-.header__sort-wrapper {
-  gap: 1.5rem;
-}
-.header__sort {
-  border-radius: 5px;
-  padding: 0.14rem 0.625rem;
-  text-decoration: none;
-}
-.header__sort--other {
-  color: var(--orange-color);
-  background-color: var(--light-orange-color);
-}
-.header__sort--work {
-  color: var(--purple-color);
-  background-color: var(--light-purple-color);
-}
-.header__sort--home {
-  color: var(--green-color);
-  background-color: var(--light-green-color);
-}
-.header__sort--health {
-  color: var(--blue-color);
-  background-color: var(--light-blue-color);
-}
-.header__sort--reset {
-  color: var(--lighter-gray-color);
-  background-color: black;
-}
