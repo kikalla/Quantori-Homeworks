@@ -2,20 +2,40 @@ import { useEffect, useState } from "react";
 import "./header.css";
 import { DEFAULT_CITY, key } from "../../config";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { ThunkDispatch, AnyAction } from "@reduxjs/toolkit";
+import TasksState from "../../models/TasksStore";
+import { formActions } from "../../store/form-slice";
+import { NavLink, useSearchParams } from "react-router-dom";
+import { tasksActions } from "../../store/tasks-slice";
 
-interface Props {
-  setFormVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
-}
+const AppHeader: React.FC = () => {
+  const dispatch: ThunkDispatch<TasksState, unknown, AnyAction> = useDispatch();
 
-const AppHeader: React.FC<Props> = (props) => {
   const changeFormVisibility = () => {
-    props.setFormVisible((formVisible) => !formVisible);
+    dispatch(formActions.toggleAddFormVisibility({}));
   };
 
-  const search = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.setSearch(event.target.value);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const search = searchParams.get("task") || "";
+  const searchURL = search !== "" ? `?task=${search}` : "";
+
+  const searchHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const task = event.target.value;
+    if (task) {
+      setSearchParams({ task });
+    } else {
+      setSearchParams({});
+    }
+    dispatch(tasksActions.updateSearch({ search: search }));
   };
+
+  useEffect(() => {
+    dispatch(
+      tasksActions.updateSearch({ search: searchParams.get("task") || "" })
+    );
+  }, [dispatch, searchParams]);
 
   interface WeatherResponse {
     location: {
@@ -103,13 +123,41 @@ const AppHeader: React.FC<Props> = (props) => {
       </div>
       <div className="header__search flex">
         <input
-          onChange={search}
+          onChange={searchHandler}
           type="text"
           placeholder="Search Task"
-          className="header__input"></input>
+          className="header__input"
+          value={search}></input>
         <button className="header__button" onClick={changeFormVisibility}>
           + New Task
         </button>
+      </div>
+      <div className="flex header__sort-wrapper">
+        <NavLink
+          className={"header__sort header__sort--work"}
+          to={`/work${searchURL}`}>
+          Work
+        </NavLink>
+        <NavLink
+          className={"header__sort header__sort--other"}
+          to={`/other${searchURL}`}>
+          Other
+        </NavLink>
+        <NavLink
+          className={"header__sort header__sort--home"}
+          to={`/home${searchURL}`}>
+          Home
+        </NavLink>
+        <NavLink
+          className={"header__sort header__sort--health"}
+          to={`/health${searchURL}`}>
+          Health
+        </NavLink>
+        <NavLink
+          className={"header__sort header__sort--reset"}
+          to={`/${searchURL}`}>
+          Reset Sort
+        </NavLink>
       </div>
     </header>
   );

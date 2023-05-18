@@ -125,7 +125,13 @@
 .completed-tasks__list {
   list-style-type: none;
 }
+.tasks__icons {
+  gap: 1rem;
+}
 .completed-tasks__delete {
+  cursor: pointer;
+}
+.completed-tasks__edit {
   cursor: pointer;
 }
 .completed-tasks__info--type {
