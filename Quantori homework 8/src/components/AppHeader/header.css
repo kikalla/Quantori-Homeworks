@@ -1,0 +1,73 @@
+/* Header Styling */
+
+.header {
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2.625rem;
+  gap: 2.75rem;
+}
+.header__input {
+  width: 100%;
+}
+.header__search {
+  width: 100%;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+.header__container {
+  width: 100%;
+  justify-content: space-between;
+}
+.header__weather {
+  justify-content: space-between;
+  padding-right: 1.875rem;
+  height: 4rem;
+}
+.header__weather--temp {
+  margin-left: 1.5rem;
+  margin-right: 5rem;
+  font-weight: 700;
+}
+.header__weather--city {
+  color: var(--gray-color);
+}
+.header__button {
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  border: none;
+  font-weight: 800;
+  white-space: nowrap;
+  color: var(--blue-color);
+  background-color: var(--transparent-blue-color);
+}
+
+.header__sort-wrapper {
+  gap: 1.5rem;
+}
+.header__sort {
+  border-radius: 5px;
+  padding: 0.14rem 0.625rem;
+  text-decoration: none;
+}
+.header__sort--other {
+  color: var(--orange-color);
+  background-color: var(--light-orange-color);
+}
+.header__sort--work {
+  color: var(--purple-color);
+  background-color: var(--light-purple-color);
+}
+.header__sort--home {
+  color: var(--green-color);
+  background-color: var(--light-green-color);
+}
+.header__sort--health {
+  color: var(--blue-color);
+  background-color: var(--light-blue-color);
+}
+.header__sort--reset {
+  color: var(--lighter-gray-color);
+  background-color: black;
+}
